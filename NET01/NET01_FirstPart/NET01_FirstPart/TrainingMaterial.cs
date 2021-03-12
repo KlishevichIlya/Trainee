@@ -4,11 +4,9 @@ using System.Text;
 
 namespace NET01_FirstPart
 {
-    abstract public class TrainingMaterial
-    {
-        public Guid Id;
-        public string Description { get; private set; }
-
+     public class TrainingMaterial : Entity
+     {
+        
         public TrainingMaterial(string desc)
         {
             Description = desc;
@@ -35,5 +33,5 @@ namespace NET01_FirstPart
                 return false;
             return material.Id == this.Id;
         }
-    }
+     }
 }

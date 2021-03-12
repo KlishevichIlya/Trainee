@@ -5,38 +5,24 @@ using System.Text;
 
 namespace NET01_FirstPart
 {
-    public class TrainingLesson : IVersionable, ICloneable
+    public class TrainingLesson : Entity, IVersionable, ICloneable
     {
-        public Guid Id;
-
-        public string Description;
-
         public List<TrainingMaterial> TrainingMaterials = new List<TrainingMaterial>();
 
-        public byte[] version = new byte[8] {0,0,0,0,0,0,0,0};
-
+        public byte[] version = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 } ;
+        
         public enum TypeLesson : byte       
         {
             VideoLesson,
             TextLesson
         }
+        
         public TrainingLesson(Guid guid, string desc)
         {
-            Id = guid;
-            try 
-            {
-                if(desc.Length > 256)
-                {
-                    throw new Exception("Length description more than 256 symbols");
-                }
-                Description = desc;
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine($"Error : {ex.Message}");
-            }
-            
+            Id = guid;            
+            Description = desc;              
         }
+
         public TrainingLesson()
         {
             this.NewGuidForLesson();
@@ -54,13 +40,11 @@ namespace NET01_FirstPart
             return TypeLesson.TextLesson;
         }
 
-
-
         public override string ToString()
-        {
-            return Description;
+        {           
+             return Description;         
+           
         }
-
 
         public override bool Equals(object obj)
         {
