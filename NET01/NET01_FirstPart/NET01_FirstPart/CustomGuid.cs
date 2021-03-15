@@ -7,9 +7,8 @@ namespace NET01_FirstPart
         public static void NewGuid(this Entity entity)
         {
             if (entity == null)
-                throw new ArgumentException("Object reference is null");
-            else
-                entity.Id = Guid.NewGuid();
+                throw new ArgumentNullException();
+            entity.Id = Guid.NewGuid();
         }
     }
 }

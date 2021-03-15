@@ -2,15 +2,6 @@
 
 namespace NET01_FirstPart
 {
-    public enum TypeLink
-    {
-        Unknow,
-        Html,
-        Image,
-        Audio,
-        Video
-    }
-
     public class LinkToSite : TrainingMaterial, ICloneable
     {
         public string ImageURI { get; set; }
@@ -35,7 +26,8 @@ namespace NET01_FirstPart
             return new LinkToSite
             {
                 Description = Description,
-                ImageURI = ImageURI
+                ImageURI = ImageURI,
+                TypeLink = TypeLink
             };
         }
     }

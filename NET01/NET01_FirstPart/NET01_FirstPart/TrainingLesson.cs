@@ -4,12 +4,6 @@ using System.Collections.Generic;
 
 namespace NET01_FirstPart
 {
-    public enum TypeLesson
-    {
-        VideoLesson,
-        TextLesson
-    }
-
     public class TrainingLesson : Entity, IVersionable, ICloneable
     {
         public List<TrainingMaterial> TrainingMaterials = new List<TrainingMaterial>();

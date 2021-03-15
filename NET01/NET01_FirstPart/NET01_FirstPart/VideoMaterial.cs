@@ -12,17 +12,17 @@ namespace NET01_FirstPart
 
     public class VideoMaterial : TrainingMaterial, IVersionable, ICloneable
     {
-        public string VideoImageURI { get; set; }
+        public string VideoURI { get; set; }
 
         public string ImageURI { get; set; }
 
         private byte[] version = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
 
-        public VideoMaterial(Guid guid, string desc, string VideoImageURI, string ImageURI)
+        public VideoMaterial(Guid guid, string desc, string VideoURI, string ImageURI)
             : base(desc)
         {
             Id = guid;
-            this.VideoImageURI = VideoImageURI;
+            this.VideoURI = VideoURI;
             this.ImageURI = ImageURI;
         }
         public VideoMaterial()
@@ -55,7 +55,7 @@ namespace NET01_FirstPart
             {
                 Description = Description,
                 ImageURI = ImageURI,
-                VideoImageURI = VideoImageURI
+                VideoURI = VideoURI
             };
         }
     }
