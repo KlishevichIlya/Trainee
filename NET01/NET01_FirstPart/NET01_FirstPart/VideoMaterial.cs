@@ -1,36 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NET01_FirstPart
 {
-    class VideoMaterial : TrainingMaterial, IVersionable, ICloneable
-    {        
-        public string URL { get; set; }
+    public enum TypeVideo
+    {
+        Unknow,
+        Avi,
+        Mp4,
+        Flv
+    }
 
-        public string URI { get; set; }
+    public class VideoMaterial : TrainingMaterial, IVersionable, ICloneable
+    {
+        public string VideoImageURI { get; set; }
 
-        private byte[] version = new byte[8] {0,0,0,0,0,0,0,0};
+        public string ImageURI { get; set; }
 
-        public enum TypeVideo
-        {
-            Unknow,
-            Avi,
-            Mp4,
-            Flv
-        }
+        private byte[] version = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
 
-        public VideoMaterial(Guid guid, string desc, string URL, string URI)
-            :base(desc)
+        public VideoMaterial(Guid guid, string desc, string VideoImageURI, string ImageURI)
+            : base(desc)
         {
             Id = guid;
-            this.URL = URL;
-            this.URI = URI;
+            this.VideoImageURI = VideoImageURI;
+            this.ImageURI = ImageURI;
         }
         public VideoMaterial()
-            
+
         {
-            
+
         }
 
         public byte[] GetVersion()
@@ -56,8 +54,8 @@ namespace NET01_FirstPart
             return new VideoMaterial
             {
                 Description = Description,
-                URI = URI,
-                URL = URL
+                ImageURI = ImageURI,
+                VideoImageURI = VideoImageURI
             };
         }
     }

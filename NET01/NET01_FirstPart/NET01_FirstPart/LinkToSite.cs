@@ -1,26 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NET01_FirstPart
 {
-    class LinkToSite : TrainingMaterial, ICloneable
-    {       
-        public string URI { get; set; }
-        public enum TypeLink 
-        {
-            Unknow,
-            Html,
-            Image,
-            Audio,
-            Video
-        }
+    public enum TypeLink
+    {
+        Unknow,
+        Html,
+        Image,
+        Audio,
+        Video
+    }
 
-        public LinkToSite(Guid guid, string desc, string URI)
-            :base(desc)
+    public class LinkToSite : TrainingMaterial, ICloneable
+    {
+        public string ImageURI { get; set; }
+
+        public TypeLink TypeLink { get; set; }
+
+        public LinkToSite(Guid guid, string desc, string ImageURI, TypeLink typeLink)
+            : base(desc)
         {
             Id = guid;
-            this.URI = URI;
+            this.ImageURI = ImageURI;
+            TypeLink = typeLink;
         }
 
         public LinkToSite()
@@ -33,7 +35,7 @@ namespace NET01_FirstPart
             return new LinkToSite
             {
                 Description = Description,
-                URI = URI
+                ImageURI = ImageURI
             };
         }
     }
