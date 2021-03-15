@@ -4,11 +4,10 @@ using System.Text;
 
 namespace NET01_FirstPart
 {
-    class LinkToSite : TrainingMaterial
-    {
-       
-        public string URI;
-        public enum TypeLink : byte
+    class LinkToSite : TrainingMaterial, ICloneable
+    {       
+        public string URI { get; set; }
+        public enum TypeLink 
         {
             Unknow,
             Html,
@@ -27,6 +26,15 @@ namespace NET01_FirstPart
         public LinkToSite()
         {
 
+        }
+
+        public override object Clone()
+        {
+            return new LinkToSite
+            {
+                Description = Description,
+                URI = URI
+            };
         }
     }
 }

@@ -6,7 +6,7 @@ namespace NET01_FirstPart
 {
     interface IVersionable
     {
-        void GetVersion();
+        byte[] GetVersion();
         void SetVersion(params byte[] numbers);
     }
 }

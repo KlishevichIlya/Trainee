@@ -6,15 +6,16 @@ namespace NET01_FirstPart
 {
     public static class CustomGuid 
     {
-        public static void NewGuidForLesson(this TrainingLesson item)
+        public static void NewGuid(this Entity entity)
         {
-             item.Id = Guid.NewGuid();            
-        }
-
-
-        public static void NewGuidForMaterial(this TrainingMaterial material)
-        {
-            material.Id = Guid.NewGuid();
+            if (entity != null)
+            {
+                entity.Id = Guid.NewGuid();
+            }
+            else
+            {
+                throw new Exception("Object reference is null");
+            }
         }
     }
 }

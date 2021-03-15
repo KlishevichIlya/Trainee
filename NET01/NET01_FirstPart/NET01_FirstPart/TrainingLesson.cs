@@ -5,17 +5,17 @@ using System.Text;
 
 namespace NET01_FirstPart
 {
+    public enum TypeLesson
+    {
+        VideoLesson,
+        TextLesson
+    }
+
     public class TrainingLesson : Entity, IVersionable, ICloneable
     {
-        public List<TrainingMaterial> TrainingMaterials = new List<TrainingMaterial>();
+        public List<TrainingMaterial> TrainingMaterials = new List<TrainingMaterial>();       
 
-        public byte[] version = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 } ;
-        
-        public enum TypeLesson : byte       
-        {
-            VideoLesson,
-            TextLesson
-        }
+        private byte[] version = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 } ;       
         
         public TrainingLesson(Guid guid, string desc)
         {
@@ -25,7 +25,7 @@ namespace NET01_FirstPart
 
         public TrainingLesson()
         {
-            this.NewGuidForLesson();
+            
         }
 
         public TypeLesson CheckTypeLesson()
@@ -53,38 +53,46 @@ namespace NET01_FirstPart
             TrainingLesson lesson = obj as TrainingLesson;
             if (lesson == null)
                 return false;
-            return lesson.Id == this.Id;            
+            return lesson.Id == this.Id;
         }
 
-        public void GetVersion()
+        public override int GetHashCode()
         {
-            for(int i=0; i < version.Length; i++)
+            return Id.GetHashCode();
+        }
+
+        public byte[] GetVersion()
+        {
+            byte[] getversion = new byte[version.Length];
+            for(int i = 0; i < version.Length; i++)
             {
-                Console.Write(version[i] + " ");
+                getversion[i] = version[i];
             }
-            Console.WriteLine();
+            return getversion;           
         }
 
         public void SetVersion(params byte[] numbers)
         {
-            for(int i=0; i < numbers.Length; i++)
+            for(int i = 0; i < numbers.Length; i++)
             {
                 version[i] = numbers[i];
             }
         }
 
         public object Clone()
-        {
-            List<TrainingMaterial> materials = new List<TrainingMaterial>();
-            byte[] ver = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 };
-
+        {          
+            var copy = new List<TrainingMaterial>();
+            byte[] ver = new byte[8] { 0, 0, 0, 0, 0, 0, 0, 0 };    
+            foreach(var el in TrainingMaterials)
+            {
+                copy.Add((TrainingMaterial)el.Clone());
+            }            
             return new TrainingLesson
             {
                 Id = Guid.NewGuid(),
-                Description = this.Description,
-                TrainingMaterials = materials,
+                Description = Description,
+                TrainingMaterials = copy,
                 version = ver
-
             };
         }
     }

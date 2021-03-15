@@ -4,16 +4,15 @@ using System.Text;
 
 namespace NET01_FirstPart
 {
-    class VideoMaterial : TrainingMaterial, IVersionable
-    {
-        
-        public string URL;
+    class VideoMaterial : TrainingMaterial, IVersionable, ICloneable
+    {        
+        public string URL { get; set; }
 
-        public string URI;
+        public string URI { get; set; }
 
-        public byte[] version = new byte[8] {0,0,0,0,0,0,0,0};
+        private byte[] version = new byte[8] {0,0,0,0,0,0,0,0};
 
-        public enum TypeVideo : byte
+        public enum TypeVideo
         {
             Unknow,
             Avi,
@@ -34,13 +33,14 @@ namespace NET01_FirstPart
             
         }
 
-        public void GetVersion()
+        public byte[] GetVersion()
         {
+            byte[] getVersion = new byte[version.Length];
             for (int i = 0; i < version.Length; i++)
             {
-                Console.Write(version[i] + " ");
+                getVersion[i] = version[i];
             }
-            Console.WriteLine();
+            return getVersion;
         }
 
         public void SetVersion(params byte[] numbers)
@@ -49,6 +49,16 @@ namespace NET01_FirstPart
             {
                 version[i] = numbers[i];
             }
+        }
+
+        public override object Clone()
+        {
+            return new VideoMaterial
+            {
+                Description = Description,
+                URI = URI,
+                URL = URL
+            };
         }
     }
 }

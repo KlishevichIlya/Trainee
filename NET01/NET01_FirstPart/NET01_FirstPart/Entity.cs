@@ -8,7 +8,8 @@ namespace NET01_FirstPart
     {
         public Guid Id { get; set; }
 
-        private string description; 
+        private string description;
+        
         public string Description 
         { 
             get
@@ -16,16 +17,18 @@ namespace NET01_FirstPart
                 return description;
             } 
             set 
-            {
-                
+            {                
                 if (value.Length > 256)
                 {
                     throw new Exception("Length description more than 256 symbols");
-                }
-                
+                }                
                 description = value;
-            }
-        
+            }        
+        }
+
+        public Entity()
+        {
+            this.NewGuid();
         }
     }
 }

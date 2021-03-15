@@ -4,25 +4,22 @@ using System.Text;
 
 namespace NET01_FirstPart
 {
-     public class TrainingMaterial : Entity
-     {
-        
+     public class TrainingMaterial : Entity, ICloneable
+     {        
         public TrainingMaterial(string desc)
         {
             Description = desc;
         }
+
         public TrainingMaterial()
         {
-            this.NewGuidForMaterial();
-        }
-
+            
+        }        
 
         public override string ToString()
         {
-            return Description;
-            
+            return Description;            
         }
-
 
         public override bool Equals(object obj)
         {
@@ -33,5 +30,18 @@ namespace NET01_FirstPart
                 return false;
             return material.Id == this.Id;
         }
-     }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+
+        public virtual object Clone()
+        {
+            return new TrainingMaterial
+            {
+                Description = Description
+            };
+        }
+    }
 }
