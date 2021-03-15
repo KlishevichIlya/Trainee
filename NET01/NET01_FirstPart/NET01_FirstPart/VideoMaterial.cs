@@ -2,14 +2,6 @@
 
 namespace NET01_FirstPart
 {
-    public enum TypeVideo
-    {
-        Unknow,
-        Avi,
-        Mp4,
-        Flv
-    }
-
     public class VideoMaterial : TrainingMaterial, IVersionable, ICloneable
     {
         public string VideoURI { get; set; }

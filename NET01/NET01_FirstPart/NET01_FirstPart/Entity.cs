@@ -33,12 +33,7 @@ namespace NET01_FirstPart
             return Description;
         }
 
-        public override bool Equals(object obj)
-        {
-            if (obj is TrainingLesson less && less != null)
-                return less.Id == this.Id;
-            return false;
-        }
+        public override bool Equals(object obj) => (obj is TrainingLesson lesson) && lesson.Id == Id;
 
         public override int GetHashCode()
         {
