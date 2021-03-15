@@ -1,8 +1,11 @@
-﻿public enum TypeLink
+﻿namespace NET01_FirstPart
 {
-    Unknow,
-    Html,
-    Image,
-    Audio,
-    Video
+    public enum TypeLink
+    {
+        Unknow,
+        Html,
+        Image,
+        Audio,
+        Video
+    }
 }

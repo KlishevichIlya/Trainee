@@ -1,5 +1,8 @@
-﻿public enum TypeLesson
+﻿namespace NET01_FirstPart
 {
-    VideoLesson,
-    TextLesson
+    public enum TypeLesson
+    {
+        VideoLesson,
+        TextLesson
+    }
 }

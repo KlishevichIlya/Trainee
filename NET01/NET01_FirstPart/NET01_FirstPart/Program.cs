@@ -6,7 +6,7 @@ namespace NET01_FirstPart
     {
         static void Main(string[] args)
         {
-            TrainingLesson t1 = new TrainingLesson(Guid.NewGuid(), "desc");
+            TrainingLesson t1 = new TrainingLesson(Guid.NewGuid(), null);
             VideoMaterial v1 = new VideoMaterial(Guid.NewGuid(), "video", "ll", "ll");
             TextMaterial txt = new TextMaterial(Guid.NewGuid(), "text", "asdas");
             LinkToSite link = new LinkToSite(Guid.NewGuid(), "desc", "url", TypeLink.Image);

@@ -16,7 +16,7 @@ namespace NET01_FirstPart
                 if (String.IsNullOrEmpty(value))
                     throw new ArgumentException("Value cannot be null or empty.");
                 if (value.Length > 10000)
-                    throw new Exception("Text is too long. You can write less than 10000 symbols.");
+                    throw new ArgumentException("Text is too long. You can write less than 10000 symbols.");
                 text = value;
             }
         }

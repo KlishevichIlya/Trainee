@@ -1,7 +1,10 @@
-﻿public enum TypeVideo
+﻿namespace NET01_FirstPart
 {
-    Unknow,
-    Avi,
-    Mp4,
-    Flv
+    public enum TypeVideo
+    {
+        Unknow,
+        Avi,
+        Mp4,
+        Flv
+    }
 }

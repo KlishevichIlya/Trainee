@@ -15,9 +15,7 @@ namespace NET01_FirstPart
             }
             set
             {
-                if (value == null)
-                    throw new ArgumentNullException();
-                if (value.Length > 256)
+                if (value?.Length > 256)
                     throw new ArgumentException("Length description more than 256 symbols");
                 description = value;
             }
