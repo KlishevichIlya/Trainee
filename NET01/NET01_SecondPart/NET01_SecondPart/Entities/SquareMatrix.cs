@@ -20,7 +20,12 @@ namespace NET01_SecondPart.Entities
             set
             {
                 Check.IsCorrectIndex(row, col);
+                T temp = _data[row * Size + col];
                 _data[row * Size + col] = value;
+                if (IsGenerateEvent(temp, value))
+                {
+                    OnChangeValue(new ValueEventArgs<T>(row, col, temp, value));
+                }
             }
         }
     }

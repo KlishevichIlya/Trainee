@@ -46,6 +46,7 @@
     <Compile Include="Entities\DiagonalMatrix.cs" />
     <Compile Include="Entities\Matrix.cs" />
     <Compile Include="Entities\SquareMatrix.cs" />
+    <Compile Include="Entities\ValueEventArgs.cs" />
     <Compile Include="Helper\Check.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
