@@ -7,12 +7,11 @@ namespace NET01_SecondPart.Entities
     /// <typeparam name="T">Parameter need for working with generic types.</typeparam>
     public class SquareMatrix<T>
     {
-        /// <summary>The field for saving matrix elements.</summary>
         protected T[] Data;
 
         /// <summary>Get or set size square matrix.</summary>
         /// <value>Size must be INT type.</value>
-        public int Size { get; set; }
+        public int Size { get; protected set; }
 
         /// <summary>Gets or sets the element of matrix.</summary>
         /// <param name="row">The row of matrix element.</param>
@@ -46,40 +45,23 @@ namespace NET01_SecondPart.Entities
             Data = new T[size * size];
         }
 
-        /// <summary>Allow child classes to change the constructor.</summary>
         protected SquareMatrix()
         {
         }
 
-        /// <summary>Determines whether an event for changing a matrix element should be generated.</summary>
-        /// <param name="oldValue">The old value of matrix element.</param>
-        /// <param name="newValue">The new value of matrix element.</param>
-        /// <returns>
-        ///   <c>true if the values ​​do not match; otherwise, it is false.</c>
-        /// </returns>
         protected bool IsGenerateEvent(T oldValue, T newValue) =>
             !EqualityComparer<T>.Default.Equals(oldValue, newValue);
 
-        /// <summary>Checks the size of matrix.</summary>
-        /// <param name="size">The size.</param>
-        /// <exception cref="ArgumentOutOfRangeException">Size less than zero.</exception>
         protected void CheckCorrectSize(int size)
         {
             if (size < 0) throw new ArgumentOutOfRangeException(nameof(size));
         }
 
-        /// <summary>Checks the index of the correct.</summary>
-        /// <param name="row">The row.</param>
-        /// <param name="col">The col.</param>
-        /// <exception cref="ArgumentOutOfRangeException">Row or Column less than zero. Row or Column more than he dimensions of the matrix </exception>
         protected void CheckCorrectIndex(int row, int col)
         {
             if (row < 0 || col < 0 || row > Size || col > Size) throw new ArgumentOutOfRangeException();
         }
 
-        /// <summary>Raises the <see cref="E:ValueChanged" /> event.</summary>
-        /// <param name="e">The <see cref="ValueEventArgs{T}" /> instance containing the event data.
-        /// (Row, Column, Old Value, New Value)</param>
         protected virtual void OnValueChanged(ValueEventArgs<T> e) => ValueChanged?.Invoke(this, e);
     }
 }

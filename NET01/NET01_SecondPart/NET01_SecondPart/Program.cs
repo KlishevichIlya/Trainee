@@ -39,7 +39,7 @@ namespace NET01_SecondPart
         public static void Main(string[] args)
         {
             var square = new SquareMatrix<int>(3);
-            var diagonal = new DiagonalMatrix<string>(-1);
+            var diagonal = new DiagonalMatrix<string>(3);
             var otherDiagonal = new DiagonalMatrix<string>(4);
 
             square.ValueChanged += Reaction;
@@ -60,14 +60,14 @@ namespace NET01_SecondPart
 
             square[1, 1] = 1;
             square[1, 2] = 0;
-            diagonal[0, 0] = "5";
+            diagonal[0, 0] = "8";
+            diagonal[0, 2] = "5";
             diagonal[1, 1] = "4";
             diagonal[2, 2] = "4";
             otherDiagonal[0, 0] = "3";
             otherDiagonal[1, 1] = "2";
             otherDiagonal[2, 2] = "5";
             otherDiagonal[3, 3] = "7";
-
 
             PrintMatrix(square);
             PrintMatrix(diagonal);

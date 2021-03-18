@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace NET01_SecondPart.Entities
+﻿namespace NET01_SecondPart.Entities
 {
     /// <summary>Class for working with diagonal matrix.</summary>
     /// <typeparam name="T">Parameter need for working with generic types.</typeparam>
@@ -20,7 +18,7 @@ namespace NET01_SecondPart.Entities
             set
             {
                 CheckCorrectIndex(row, col);
-                CheckDiagonalElement(row, col);
+                if (row != col) return;
                 var temp = Data[row];
                 Data[row] = value;
                 if (IsGenerateEvent(temp, value))
@@ -37,15 +35,6 @@ namespace NET01_SecondPart.Entities
             CheckCorrectSize(size);
             Size = size;
             Data = new T[size];
-        }
-
-        /// <summary>Checks the diagonal element.</summary>
-        /// <param name="row">The row of matrix element.</param>
-        /// <param name="col">The column of matrix element.</param>
-        /// <exception cref="ArgumentOutOfRangeException"></exception>
-        protected void CheckDiagonalElement(int row, int col)
-        {
-            if (row != col) throw new ArgumentOutOfRangeException();
         }
     }
 }
