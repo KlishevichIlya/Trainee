@@ -7,10 +7,7 @@ namespace NET02_FirstPart.Entities
 {
     public class CatalogDictionary : KeyedCollection<string, Book>
     {
-        public void ChangeTitle(Book item, string isbn)
-        {
-            ChangeItemKey(item, isbn);
-        }
+        public void ChangeTitle(Book item, string isbn) => ChangeItemKey(item, isbn);
 
         public new IEnumerator<Book> GetEnumerator() => Items.OrderBy(e => e.Name).GetEnumerator();
 
@@ -60,8 +57,8 @@ namespace NET02_FirstPart.Entities
             {
                 book.Catalog = null;
             }
-
             base.ClearItems();
         }
+
     }
 }
