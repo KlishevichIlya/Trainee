@@ -30,10 +30,10 @@ namespace NET02_FirstPart.Tests.Entities
                 new Book("3333333333333", "C")
             };
 
-            newCatalog.SortBooksDescending();
+            var sortedCatalog = newCatalog.SortBooksDescending();
 
-            //CollectionAssert.AreEqual(newCatalog, _catalog);
-            Assert.IsTrue(_catalog.SequenceEqual(newCatalog, new CatalogEqualityComparer()));
+            CollectionAssert.AreEqual(sortedCatalog.ToList(), _catalog);
+            // Assert.IsTrue(_catalog.SequenceEqual(newCatalog, new CatalogEqualityComparer()));
         }
     }
 }

@@ -8,6 +8,5 @@ namespace NET02_FirstPart.Tests.Entities
         public bool Equals(Book x, Book y) => y != null && x != null && (ReferenceEquals(x, y) || x.Isbn == y.Isbn);
 
         public int GetHashCode(Book obj) => obj.Isbn.GetHashCode();
-
     }
 }

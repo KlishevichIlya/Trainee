@@ -23,17 +23,20 @@ namespace NET02_FirstPart
 
             var catalog = new CatalogDictionary
             {
-                new Book("1111111111111", "The catcher in the rye", DateTime.Now, authorsOfFirst),
-                new Book("3333333333333", "The great Gatsby", new DateTime(1987, 05, 05), authorsOfSecond)
+                new Book("111-1-11-111111-1", "The catcher in the rye", DateTime.Now, authorsOfFirst),
+                new Book("3333333333333", "The great Gatsby", new DateTime(1987, 05, 05), authorsOfSecond),
+                new Book("1111111111111", "The catcher", DateTime.Now, authorsOfFirst),
             };
+            Console.WriteLine(catalog["111-1-11-111111-1".Replace("-", "")].Name);
+            Console.WriteLine(catalog["1111111111111"].Name);
 
-            var books = catalog.GetBookByCurrentAuthor(new Author("BOB", "SMITH"));
-            foreach (var item in books)
+            Console.WriteLine("***");
+            foreach (var item in catalog.GetBookByCurrentAuthor(new Author("ALAN", "COOPER")))
             {
                 Console.WriteLine(item.Name);
             }
+            Console.WriteLine("***");
 
-            Console.WriteLine();
 
             foreach (var item in catalog.SortBooksDescending())
             {

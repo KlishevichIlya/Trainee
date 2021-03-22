@@ -14,8 +14,7 @@ namespace NET02_FirstPart.Entities
             get => _firstName;
             set
             {
-                CheckFieldValue(value);
-                CheckFieldLength(value);
+                CheckFieldForEmptyOrLength(value);
                 _firstName = value;
             }
         }
@@ -25,27 +24,28 @@ namespace NET02_FirstPart.Entities
             get => _secondName;
             set
             {
-                CheckFieldValue(value);
-                CheckFieldLength(value);
+                CheckFieldForEmptyOrLength(value);
                 _secondName = value;
             }
         }
 
         public Author(string firstName, string secondName)
         {
-            FirstName = firstName;
-            SecondName = secondName;
+            FirstName = firstName.ToLower();
+            SecondName = secondName.ToLower();
         }
 
-        private static void CheckFieldLength(string value)
+        public override bool Equals(object obj) => (obj is Author author) && author.FirstName == FirstName &&
+                                                   author.SecondName == SecondName;
+
+        public override int GetHashCode() => FirstName.GetHashCode() + SecondName.GetHashCode();
+
+        private static void CheckFieldForEmptyOrLength(string value)
         {
-            if (value?.Length > MaxLength)
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException();
+            if (value.Length > MaxLength)
                 throw new ArgumentException($"Argument must be less than {MaxLength} symbols.");
-        }
-
-        private static void CheckFieldValue(string value)
-        {
-            if (string.IsNullOrWhiteSpace(value) || string.IsNullOrEmpty(value)) throw new ArgumentException();
         }
     }
 }

@@ -18,7 +18,7 @@ namespace NET02_FirstPart.Entities
             set
             {
                 _isbn = Regex.IsMatch(value, _pattern)
-                    ? value
+                    ? value.Replace(@"-", "")
                     : throw new ArgumentException("The ISBN is in the wrong format");
                 Catalog?.ChangeTitle(this, value);
             }
@@ -52,7 +52,7 @@ namespace NET02_FirstPart.Entities
         }
 
         public override bool Equals(object obj) =>
-            (obj is Book book) && book.Isbn.Replace(@"-", "") == Isbn.Replace(@"-", "");
+            (obj is Book book) && book.Isbn == Isbn;
 
         public override int GetHashCode() => Isbn.GetHashCode();
     }
