@@ -1,19 +1,19 @@
 {
-  "@name": "Flex",
-  "window": [
+  "Name": "Flex",
+  "Windows": [
     {
-      "@title": "main",
-      "top": "10",
-      "left": "20",
-      "width": "400",
-      "height": ""
+      "Title": "main",
+      "Top": "10",
+      "Left": "20",
+      "Width": "400",
+      "Height": ""
     },
     {
-      "@title": "help",
-      "left": "30",
-      "top": "20",
-      "height": "100",
-      "width": "400"
+      "Title": "help",
+      "Top": "20",
+      "Left": "30",
+      "Width": "400",
+      "Height": "100"
     }
   ]
 }

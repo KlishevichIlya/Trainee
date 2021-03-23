@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{37048603-12CA-49B6-8827-6ACD5819BAE0}</ProjectGuid>
+    <ProjectGuid>{FD350907-CC8C-485D-9B7C-9CFFA5FAC6A6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>NET02_SecondPart</RootNamespace>
-    <AssemblyName>NET02_SecondPart</AssemblyName>
+    <RootNamespace>NET02_ThirdPart</RootNamespace>
+    <AssemblyName>NET02_ThirdPart</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,18 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Configuration.cs" />
-    <Compile Include="Entities\Login.cs" />
-    <Compile Include="Entities\XmlFile.cs" />
-    <Compile Include="Entities\Window.cs" />
-    <Compile Include="Entities\WriteJson.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
