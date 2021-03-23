@@ -1,0 +1,19 @@
+{
+  "@name": "Flex",
+  "window": [
+    {
+      "@title": "main",
+      "top": "10",
+      "left": "20",
+      "width": "400",
+      "height": ""
+    },
+    {
+      "@title": "help",
+      "left": "30",
+      "top": "20",
+      "height": "100",
+      "width": "400"
+    }
+  ]
+}

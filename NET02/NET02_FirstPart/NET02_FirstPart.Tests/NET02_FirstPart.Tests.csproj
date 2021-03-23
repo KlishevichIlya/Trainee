@@ -52,7 +52,6 @@
     <Compile Include="Entities\AuthorTests.cs" />
     <Compile Include="Entities\BookTests.cs" />
     <Compile Include="Entities\CatalogDictionaryTests.cs" />
-    <Compile Include="Entities\CatalogEqualityComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

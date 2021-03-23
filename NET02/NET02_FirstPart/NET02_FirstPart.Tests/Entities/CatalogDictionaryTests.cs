@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NET02_FirstPart.Entities;
+using System;
 using System.Linq;
 
 namespace NET02_FirstPart.Tests.Entities
@@ -14,9 +15,9 @@ namespace NET02_FirstPart.Tests.Entities
         {
             _catalog = new CatalogDictionary()
             {
-                new Book("1111111111111", "A"),
-                new Book("2222222222222", "B"),
-                new Book("3333333333333", "C")
+                new Book("1111111111111", "A", new DateTime(2000,10,10)),
+                new Book("2222222222222", "B", new DateTime(1990,10,10)),
+                new Book("3333333333333", "C", new DateTime(1980,10,10))
             };
         }
 
@@ -25,14 +26,16 @@ namespace NET02_FirstPart.Tests.Entities
         {
             var newCatalog = new CatalogDictionary()
             {
-                new Book("2222222222222", "B"),
-                new Book("1111111111111", "A"),
-                new Book("3333333333333", "C")
+                new Book("2222222222222", "B",new DateTime(1990,10,10)),
+                new Book("1111111111111", "A",new DateTime(2000,10,10)),
+                new Book("3333333333333", "C", new DateTime(1980,10,10))
             };
 
             var sortedCatalog = newCatalog.SortBooksDescending();
 
-            CollectionAssert.AreEqual(sortedCatalog.ToList(), _catalog);
+            Assert.AreEqual(_catalog[0], sortedCatalog.ToList()[0]);
+            Assert.AreEqual(_catalog[1], sortedCatalog.ToList()[1]);
+            Assert.AreEqual(_catalog[2], sortedCatalog.ToList()[2]);
             // Assert.IsTrue(_catalog.SequenceEqual(newCatalog, new CatalogEqualityComparer()));
         }
     }
