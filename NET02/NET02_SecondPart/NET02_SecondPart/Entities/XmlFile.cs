@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Xml.Linq;
 
 namespace NET02_SecondPart.Entities
@@ -19,10 +18,10 @@ namespace NET02_SecondPart.Entities
                     {
                         var temp = new Window
                         {
-                            Top = Convert.ToInt32(wn.Element("top")?.Value),
-                            Width = Convert.ToInt32(wn.Element("width")?.Value),
-                            Height = Convert.ToInt32(wn.Element("height")?.Value),
-                            Left = Convert.ToInt32(wn.Element("left")?.Value),
+                            Top = int.TryParse(wn.Element("top")?.Value, out var t) ? t : (int?)null,
+                            Width = int.TryParse(wn.Element("width")?.Value, out t) ? t : (int?)null,
+                            Height = int.TryParse(wn.Element("height")?.Value, out t) ? t : (int?)null,
+                            Left = int.TryParse(wn.Element("left")?.Value, out t) ? t : (int?)null,
                             Title = wn.Attribute("title")?.Value
                         };
                         login.Windows.Add(temp);

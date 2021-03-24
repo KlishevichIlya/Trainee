@@ -1,5 +1,5 @@
-﻿using NET02_SecondPart.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace NET02_SecondPart.Entities
 {
@@ -7,40 +7,28 @@ namespace NET02_SecondPart.Entities
     {
         public List<Login> Logins { get; set; } = new List<Login>();
 
-        public void ChangeConfiguration(dynamic jsonObj, int i)
+        public bool IsCorrectConfiguration() => Logins.All(login => login.IsLoginCorrect());
+
+        public void Fix()
         {
-            foreach (var lg in Logins)
+            foreach (var login in Logins)
             {
-                for (var j = 0; j < lg.Windows.Count; j++)
-                {
-                    if (jsonObj["Logins"][i]["Windows"][j]["Top"] == null)
-                        jsonObj["Logins"][i]["Windows"][j]["Top"] = "0";
-                    if (jsonObj["Logins"][i]["Windows"][j]["Left"] == null)
-                        jsonObj["Logins"][i]["Windows"][j]["Left"] = "0";
-                    if (jsonObj["Logins"][i]["Windows"][j]["Width"] == null)
-                        jsonObj["Logins"][i]["Windows"][j]["Width"] = "400";
-                    if (jsonObj["Logins"][i]["Windows"][j]["Height"] == null)
-                        jsonObj["Logins"][i]["Windows"][j]["Height"] = "150";
-                }
+                login.Fix();
             }
         }
 
-        public bool IsCorrectConfiguration(IConfigurationChecker configurationChecker) =>
-            configurationChecker.IsCorrectConfiguration(Logins);
-
-        public void PrintIncorrectLogins(IIncorrectLoginsPrinter incorrectLoginsPrinter, List<string> incorrectLogins)
+        public override string ToString()
         {
-            incorrectLoginsPrinter.PrintIncorrectLogins(incorrectLogins);
+            var result = "";
+            foreach (var login in Logins)
+            {
+                result += "Login: " + login;
+                result = login.Windows.Aggregate(result, (current, wn) => current + wn);
+            }
+
+            return result;
         }
 
-        public void PrintInformation(IInformationPrinter informationPrinter)
-        {
-            informationPrinter.PrintInformation(this);
-        }
-
-        public List<string> GetIncorrectLogins(IIncorrectLoginsGetter incorrectLogins)
-        {
-            return incorrectLogins.GetIncorrectLogins(this);
-        }
+        public List<Login> GetIncorrectLogins() => Logins.Where(login => !login.IsLoginCorrect()).ToList();
     }
 }

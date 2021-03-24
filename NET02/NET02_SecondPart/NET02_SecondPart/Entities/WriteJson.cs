@@ -7,16 +7,11 @@ namespace NET02_SecondPart.Entities
     {
         public static void ConvertToJson(Configuration config)
         {
-            var json = JsonConvert.SerializeObject(config, Formatting.Indented);
-            dynamic jsonObj = JsonConvert.DeserializeObject(json);
-
-            for (var i = 0; i < config.Logins.Count; i++)
+            foreach (var login in config.Logins)
             {
-                string fileName = Directory.GetCurrentDirectory() + @"\Config\" + jsonObj?["Logins"][i]["Name"] +
-                                  ".json";
-                config.ChangeConfiguration(jsonObj, i);
-
-                string output = JsonConvert.SerializeObject(jsonObj?["Logins"][i], Formatting.Indented);
+                var fileName = Directory.GetCurrentDirectory() + @"\Config\" + login.Name +
+                               ".json";
+                var output = JsonConvert.SerializeObject(login, Formatting.Indented);
                 File.WriteAllText(fileName, output);
             }
         }

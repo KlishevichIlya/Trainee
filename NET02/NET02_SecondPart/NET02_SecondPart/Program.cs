@@ -1,6 +1,5 @@
 ﻿using NET02_SecondPart.Entities;
 using System;
-using System.IO;
 
 namespace NET02_SecondPart
 {
@@ -8,28 +7,19 @@ namespace NET02_SecondPart
     {
         public static void Main(string[] args)
         {
+            var config = XmlFile.Read("settings.xml");
 
-            var printerInformation = new ConsoleInformationPrinter();
-            var incorrectLoginsGetter = new IncorrectLoginsGetter();
-            var incorrectLoginPrinter = new ConsoleIncorrectLoginsPrinter();
-            var configurationChecker = new ConfigurationChecker();
+            Console.WriteLine(config);
 
-            var conf = XmlFile.Read("settings.xml");
+            foreach (var l in config.GetIncorrectLogins())
+            {
+                Console.WriteLine(l);
+            }
 
-            conf.PrintInformation(printerInformation);
-            conf.PrintIncorrectLogins(incorrectLoginPrinter, conf.GetIncorrectLogins(incorrectLoginsGetter));
+            Console.WriteLine(config.IsCorrectConfiguration());
+            config.Fix();
 
-            Console.WriteLine(conf.IsCorrectConfiguration(configurationChecker));
-
-
-            var temp = Directory.GetCurrentDirectory();
-
-            //conf.PrintInformation(printerInformation);
-
-            //conf.PrintIncorrectLogins(conf.GetIncorrectLogins(incorrectLoginsGetter));
-
-            WriteJson.ConvertToJson(conf);
-
+            WriteJson.ConvertToJson(config);
             Console.ReadLine();
         }
     }

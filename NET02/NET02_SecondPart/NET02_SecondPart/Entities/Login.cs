@@ -8,8 +8,16 @@ namespace NET02_SecondPart.Entities
         public string Name { get; set; }
         public List<Window> Windows { get; set; } = new List<Window>();
 
-        public bool IsLoginCorrect(Login login) => login.Windows.All(window => window.IsWindowCorrect(window));
+        public bool IsLoginCorrect() => Windows.All(wn => wn.IsWindowCorrect());
 
-        public override string ToString() => $"Login : {Name}";
+        public void Fix()
+        {
+            foreach (var window in Windows)
+            {
+                window.Fix();
+            }
+        }
+
+        public override string ToString() => $"{Name}\n";
     }
 }
