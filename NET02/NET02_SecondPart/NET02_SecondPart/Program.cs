@@ -7,13 +7,15 @@ namespace NET02_SecondPart
     {
         public static void Main(string[] args)
         {
+
+            var printerInformation = new ConsoleInformationPrinter();
+            var incorrectLoginsGetter = new IncorrectLoginsGetter();
+
             var conf = XmlFile.Read("settings.xml");
 
-            XmlFile.PrintInformation(conf);
+            conf.PrintInformation(printerInformation);
 
-            var incorrectLogins = XmlFile.CheckConfiguration(conf);
-
-            XmlFile.PrintIncorrectLogin(incorrectLogins);
+            conf.PrintIncorrectLogins(conf.GetIncorrectLogins(incorrectLoginsGetter));
 
             WriteJson.WorkWithJson(conf);
 

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 
 namespace NET02_SecondPart.Entities
 {
@@ -36,47 +33,6 @@ namespace NET02_SecondPart.Entities
             }
 
             return config;
-        }
-
-        public static void PrintInformation(Configuration config)
-        {
-            foreach (var login in config.Logins)
-            {
-                Console.WriteLine($"Login : {login.Name}");
-                foreach (var wn in login.Windows)
-                {
-                    Console.Write("\t" + wn.Title + "(");
-                    Console.Write(wn.Top == null ? "?" + "," : wn.Top + ",");
-                    Console.Write(wn.Left == null ? "?" + "," : wn.Left + ",");
-                    Console.Write(wn.Width == null ? "?" + "," : wn.Width + ",");
-                    Console.WriteLine(wn.Height == null ? "?" + ")" : wn.Height + ")");
-                }
-            }
-        }
-
-        public static void PrintIncorrectLogin(List<string> incorrectLogins)
-        {
-            Console.Write("Incorrect logins: ");
-            foreach (var login in incorrectLogins)
-            {
-                Console.Write(login + "");
-            }
-
-            Console.WriteLine();
-        }
-
-        public static List<string> CheckConfiguration(Configuration config)
-        {
-            var incorrectLogins = (config.Logins.SelectMany(login => login.Windows, (login, wn) => new { login, wn })
-                .Where(@t => @t.wn.Title == "main")
-                .Where(@t => @t.wn.Top == null || @t.wn.Left == null || @t.wn.Height == null || @t.wn.Width == null)
-                .Select(@t => @t.login.Name)).ToList();
-
-            Console.WriteLine(incorrectLogins.Any()
-                ? "Configuration for login is incorrect."
-                : "Configuration for login is correct.");
-
-            return incorrectLogins;
         }
     }
 }
