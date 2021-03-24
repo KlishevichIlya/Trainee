@@ -11,7 +11,7 @@
         public bool IsWindowCorrect()
         {
             if (Title != "main") return true;
-            return Top != 0 && Left != 0 && Width != 0 && Height != 0;
+            return Top != null && Left != null && Width != null && Height != null;
         }
 
         public void Fix()
