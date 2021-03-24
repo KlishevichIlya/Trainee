@@ -47,13 +47,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Configuration.cs" />
+    <Compile Include="Entities\ConfigurationChecker.cs" />
+    <Compile Include="Entities\ConsoleIncorrectLoginsPrinter.cs" />
     <Compile Include="Entities\ConsoleInformationPrinter.cs" />
     <Compile Include="Entities\IncorrectLoginsGetter.cs" />
     <Compile Include="Entities\Login.cs" />
     <Compile Include="Entities\XmlFile.cs" />
     <Compile Include="Entities\Window.cs" />
     <Compile Include="Entities\WriteJson.cs" />
+    <Compile Include="Interfaces\IConfigurationChecker.cs" />
     <Compile Include="Interfaces\IIncorrectLoginsGetter.cs" />
+    <Compile Include="Interfaces\IIncorrectLoginsPrinter.cs" />
     <Compile Include="Interfaces\IInformationPrinter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,5 +67,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Config\settings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

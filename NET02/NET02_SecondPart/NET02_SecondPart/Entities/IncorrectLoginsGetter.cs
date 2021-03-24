@@ -1,5 +1,4 @@
 ﻿using NET02_SecondPart.Interfaces;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,12 +10,8 @@ namespace NET02_SecondPart.Entities
         {
             var incorrectLogins = (config.Logins.SelectMany(login => login.Windows, (login, wn) => new { login, wn })
                 .Where(@t => @t.wn.Title == "main")
-                .Where(@t => @t.wn.Top == null || @t.wn.Left == null || @t.wn.Height == null || @t.wn.Width == null)
+                .Where(@t => @t.wn.Top == 0 || @t.wn.Left == 0 || @t.wn.Height == 0 || @t.wn.Width == 0)
                 .Select(@t => @t.login.Name)).ToList();
-
-            Console.WriteLine(incorrectLogins.Any()
-                ? "Configuration for login is incorrect."
-                : "Configuration for login is correct.");
 
             return incorrectLogins;
         }

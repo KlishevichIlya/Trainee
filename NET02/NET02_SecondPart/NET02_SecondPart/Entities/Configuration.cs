@@ -1,5 +1,4 @@
 ﻿using NET02_SecondPart.Interfaces;
-using System;
 using System.Collections.Generic;
 
 namespace NET02_SecondPart.Entities
@@ -8,15 +7,30 @@ namespace NET02_SecondPart.Entities
     {
         public List<Login> Logins { get; set; } = new List<Login>();
 
-        public void PrintIncorrectLogins(List<string> incorrectLogins)
+        public void ChangeConfiguration(dynamic jsonObj, int i)
         {
-            Console.Write("Incorrect logins: ");
-            foreach (var login in incorrectLogins)
+            foreach (var lg in Logins)
             {
-                Console.Write(login + "");
+                for (var j = 0; j < lg.Windows.Count; j++)
+                {
+                    if (jsonObj["Logins"][i]["Windows"][j]["Top"] == null)
+                        jsonObj["Logins"][i]["Windows"][j]["Top"] = "0";
+                    if (jsonObj["Logins"][i]["Windows"][j]["Left"] == null)
+                        jsonObj["Logins"][i]["Windows"][j]["Left"] = "0";
+                    if (jsonObj["Logins"][i]["Windows"][j]["Width"] == null)
+                        jsonObj["Logins"][i]["Windows"][j]["Width"] = "400";
+                    if (jsonObj["Logins"][i]["Windows"][j]["Height"] == null)
+                        jsonObj["Logins"][i]["Windows"][j]["Height"] = "150";
+                }
             }
+        }
 
-            Console.WriteLine();
+        public bool IsCorrectConfiguration(IConfigurationChecker configurationChecker) =>
+            configurationChecker.IsCorrectConfiguration(Logins);
+
+        public void PrintIncorrectLogins(IIncorrectLoginsPrinter incorrectLoginsPrinter, List<string> incorrectLogins)
+        {
+            incorrectLoginsPrinter.PrintIncorrectLogins(incorrectLogins);
         }
 
         public void PrintInformation(IInformationPrinter informationPrinter)

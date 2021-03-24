@@ -1,15 +1,15 @@
-﻿using System.Xml.Linq;
+﻿using System;
+using System.IO;
+using System.Xml.Linq;
 
 namespace NET02_SecondPart.Entities
 {
     public static class XmlFile
     {
-        private const string CurrentDirectory = @"D:\BasicTraining\NET02\NET02_SecondPart\Config\";
-
         public static Configuration Read(string filename)
         {
             var config = new Configuration();
-            var xml = XDocument.Load(CurrentDirectory + filename);
+            var xml = XDocument.Load(Directory.GetCurrentDirectory() + @"\Config\" + filename);
             foreach (var item in xml.Elements("config"))
             {
                 foreach (var lg in item.Elements("login"))
@@ -19,10 +19,10 @@ namespace NET02_SecondPart.Entities
                     {
                         var temp = new Window
                         {
-                            Top = wn.Element("top")?.Value,
-                            Width = wn.Element("width")?.Value,
-                            Height = wn.Element("height")?.Value,
-                            Left = wn.Element("left")?.Value,
+                            Top = Convert.ToInt32(wn.Element("top")?.Value),
+                            Width = Convert.ToInt32(wn.Element("width")?.Value),
+                            Height = Convert.ToInt32(wn.Element("height")?.Value),
+                            Left = Convert.ToInt32(wn.Element("left")?.Value),
                             Title = wn.Attribute("title")?.Value
                         };
                         login.Windows.Add(temp);
