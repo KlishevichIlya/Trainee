@@ -1,4 +1,4 @@
-﻿namespace NET02_ThirdPart.Interfaces
+﻿namespace Interfaces
 {
     public interface IObserver
     {
