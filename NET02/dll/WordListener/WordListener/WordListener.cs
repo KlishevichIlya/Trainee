@@ -5,7 +5,7 @@ namespace WordListener
 {
     public class WordListener : IObserver
     {
-        public void Update(ISubject subject) => File.WriteAllText(Directory.GetCurrentDirectory() + @"\WordMessage.doc",
-            "This is message for word-file.");
+        public void Update(string message, string type) => File.AppendAllText(Directory.GetCurrentDirectory() + @"\WordMessage.doc",
+            $"{message} || {type}\n");
     }
 }

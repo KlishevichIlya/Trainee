@@ -33,15 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EventLogListener">
-      <HintPath>..\..\dll\EventLogListener\EventLogListener\bin\Debug\EventLogListener.dll</HintPath>
-    </Reference>
     <Reference Include="Interfaces, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\dll\Interfaces\Interfaces\bin\Debug\Interfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.7.8\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -56,28 +50,21 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="TextListener, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\dll\TextListener\TextListener\bin\Debug\TextListener.dll</HintPath>
-    </Reference>
-    <Reference Include="WordListener">
-      <HintPath>..\..\dll\WordListener\WordListener\bin\Debug\WordListener.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Subject.cs" />
+    <Compile Include="CustomConfig\LoggerCollection.cs" />
+    <Compile Include="CustomConfig\LoggerElement.cs" />
+    <Compile Include="CustomConfig\StartupLoggerConfigSection.cs" />
+    <Compile Include="CustomConfig\TargetElement.cs" />
+    <Compile Include="CustomConfig\TargetsCollection.cs" />
+    <Compile Include="CustomConfig\StartupTargetsConfigSection.cs" />
+    <Compile Include="Entities\Logger.cs" />
+    <Compile Include="Enums\Levels.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Content Include="NLog.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="NLog.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

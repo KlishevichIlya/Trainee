@@ -8,15 +8,8 @@ namespace NET02_ThirdPart
     {
         public static void Main(string[] args)
         {
-            var subject = new Subject();
-            var textListener = new TextListener.TextListener();
-            var wordListener = new WordListener.WordListener();
-            var evtListener = new EventLogListener.EventLogListener();
-
-            subject.Attach(textListener);
-            subject.Attach(wordListener);
-            subject.Attach(evtListener);
-            subject.Notify();
+            var logger = new Logger();
+            logger.Record("Message");
 
             Console.ReadKey();
         }

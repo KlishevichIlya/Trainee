@@ -5,7 +5,7 @@ namespace TextListener
 {
     public class TextListener : IObserver
     {
-        public void Update(ISubject subject) =>
-            File.WriteAllText(Directory.GetCurrentDirectory() + @"\TxtMessage.txt", "This is text message");
+        public void Update(string message, string type) =>
+             File.AppendAllText(Directory.GetCurrentDirectory() + @"\TxtMessage.txt", $"{message} || {type}\n");
     }
 }

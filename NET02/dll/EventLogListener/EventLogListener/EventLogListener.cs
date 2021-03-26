@@ -5,9 +5,7 @@ namespace EventLogListener
 {
     public class EventLogListener : IObserver
     {
-        public void Update(ISubject subject)
-        {
-            File.WriteAllText(Directory.GetCurrentDirectory() + @"\EventLogMessage.evt", "This is message for Event Log.");
-        }
+        public void Update(string message, string type) =>
+            File.AppendAllText(Directory.GetCurrentDirectory() + @"\EventLogMessage.evt", $"{message} || {type}\n");
     }
 }
