@@ -11,6 +11,10 @@ namespace NET02_ThirdPart
             var logger = new Logger();
             logger.Record("Message");
 
+            var myClass = new MyClass("Ivan", 25);
+            logger.Track(myClass);
+
+
             Console.ReadKey();
         }
     }

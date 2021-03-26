@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using NET02_ThirdPart.Attributes;
 using NET02_ThirdPart.CustomConfig;
 using NET02_ThirdPart.Enums;
 using System;
@@ -39,6 +40,34 @@ namespace NET02_ThirdPart.Entities
                 foreach (var listener in _listeners)
                 {
                     listener.Update(message, name.ToString());
+                }
+            }
+        }
+
+        public void Track(object o)
+        {
+            var typeObject = o.GetType();
+
+            var attrs = typeObject.GetCustomAttributes(false);
+            var fields = typeObject.GetProperties();
+
+            foreach (var listener in _listeners)
+            {
+                foreach (var classAttr in attrs)
+                {
+                    if (!(classAttr is TrackingEntityAttribute)) continue;
+                    foreach (var field in fields)
+                    {
+                        foreach (var attrField in field.CustomAttributes)
+                        {
+                            if (attrField.AttributeType.Name != "TrackingPropertyAttribute") continue;
+                            listener.Update(
+                                attrField.NamedArguments.Count == 0
+                                    ? $"{field.Name} -- {field.GetValue(o)}"
+                                    : $"{attrField.NamedArguments[0].TypedValue.Value} -- {field.GetValue(o)}",
+                                "Trace");
+                        }
+                    }
                 }
             }
         }

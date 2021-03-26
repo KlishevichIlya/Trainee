@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\TrackingEntityAttribute.cs" />
+    <Compile Include="Attributes\TrackingPropertyAttribute.cs" />
     <Compile Include="CustomConfig\LoggerCollection.cs" />
     <Compile Include="CustomConfig\LoggerElement.cs" />
     <Compile Include="CustomConfig\StartupLoggerConfigSection.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="CustomConfig\StartupTargetsConfigSection.cs" />
     <Compile Include="Entities\Logger.cs" />
     <Compile Include="Enums\Levels.cs" />
+    <Compile Include="Entities\MyClass.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
