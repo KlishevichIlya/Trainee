@@ -21,6 +21,9 @@ namespace NET02_ThirdPart.Entities
 
             for (var i = 0; i < targets.TargetsItems.Count; i++)
             {
+                var name = targets.TargetsItems[i][i].Name;
+                var value = targets.TargetsItems[i][i].Value;
+
                 var asm = Assembly.LoadFrom($"{targets.TargetsItems[i].Type.Split(',')[1]}.dll");
                 var type = asm.GetType(
                     $"{targets.TargetsItems[i].Type.Split('.')[0]}.{targets.TargetsItems[i].Type.Split('.')[1].Split(',')[0]}",

@@ -10,5 +10,6 @@ namespace NET02_ThirdPart.CustomConfig
         protected override object GetElementKey(ConfigurationElement element) => ((TargetElement)(element)).Type;
 
         public TargetElement this[int idx] => (TargetElement)BaseGet(idx);
+
     }
 }

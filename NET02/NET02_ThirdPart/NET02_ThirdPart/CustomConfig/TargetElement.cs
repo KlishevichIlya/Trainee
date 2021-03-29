@@ -2,7 +2,8 @@
 
 namespace NET02_ThirdPart.CustomConfig
 {
-    public class TargetElement : ConfigurationElement
+
+    public class TargetElement : ConfigurationElementCollection
     {
         [ConfigurationProperty("type", DefaultValue = "", IsKey = false, IsRequired = true)]
         public string Type
@@ -10,5 +11,15 @@ namespace NET02_ThirdPart.CustomConfig
             get => ((string)(base["type"]));
             set => base["type"] = value;
         }
+
+
+        protected override ConfigurationElement CreateNewElement()
+        {
+            return new TargetParams();
+        }
+
+        protected override object GetElementKey(ConfigurationElement element) => ((TargetParams)(element)).Name;
+
+        public TargetParams this[int idx] => (TargetParams)BaseGet(idx);
     }
 }
