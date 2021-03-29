@@ -7,7 +7,7 @@ namespace NET02_ThirdPart.CustomConfig
     {
         protected override ConfigurationElement CreateNewElement() => new TargetElement();
 
-        protected override object GetElementKey(ConfigurationElement element) => ((TargetElement)(element)).Class;
+        protected override object GetElementKey(ConfigurationElement element) => ((TargetElement)(element)).Type;
 
         public TargetElement this[int idx] => (TargetElement)BaseGet(idx);
     }

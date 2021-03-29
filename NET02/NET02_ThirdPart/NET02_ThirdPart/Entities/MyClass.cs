@@ -6,14 +6,16 @@ namespace NET02_ThirdPart.Entities
     public class MyClass
     {
         [TrackingProperty(Name = "Custom Name")]
-        public string FieldString { get; set; }
-        [TrackingProperty]
-        public int FieldInt { get; set; }
+        public string PropertyString { get; set; }
 
-        public MyClass(string fieldString, int fieldInt)
+        [TrackingProperty] public int PropertyInt { get; set; }
+
+        [TrackingProperty(Name = "Salary")] public int Sum = 100;
+
+        public MyClass(string propertyString, int propertyInt)
         {
-            FieldString = fieldString;
-            FieldInt = fieldInt;
+            PropertyString = propertyString;
+            PropertyInt = propertyInt;
         }
     }
 }
