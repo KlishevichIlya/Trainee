@@ -1,4 +1,5 @@
-﻿using NET02_ThirdPart.Attributes;
+﻿using Logger.Attributes;
+
 
 namespace NET02_ThirdPart.Entities
 {
@@ -10,7 +11,7 @@ namespace NET02_ThirdPart.Entities
 
         [TrackingProperty] public int PropertyInt { get; set; }
 
-        [TrackingProperty(Name = "Salary")] public int Sum = 100;
+        [TrackingProperty] public int Sum = 100;
 
         public MyClass(string propertyString, int propertyInt)
         {
