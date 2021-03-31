@@ -17,6 +17,7 @@ namespace Logger
 
         static Logger()
         {
+            var temp = (StartupLoggerConfigSection)ConfigurationManager.GetSection("CustomLogger");
             _loggers = (StartupLoggerConfigSection)ConfigurationManager.GetSection("CustomLogger");
             var targets = (StartupTargetsConfigSection)ConfigurationManager.GetSection("CustomTargets");
             if (_loggers == null || targets == null)

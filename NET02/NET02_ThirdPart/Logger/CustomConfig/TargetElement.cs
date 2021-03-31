@@ -11,7 +11,6 @@ namespace Logger.CustomConfig
             set => base["type"] = value;
         }
 
-
         protected override ConfigurationElement CreateNewElement()
         {
             return new TargetParams();

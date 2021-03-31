@@ -1,5 +1,4 @@
 ﻿using NET02_ThirdPart.Entities;
-using NET02_ThirdPart.Loader;
 using System;
 
 
@@ -7,11 +6,6 @@ namespace NET02_ThirdPart
 {
     public class Program
     {
-        static Program()
-        {
-            Resolver.RegisterDependencyResolver();
-        }
-
         public static void Main(string[] args)
         {
             var logger = new Logger.Logger();

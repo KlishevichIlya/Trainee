@@ -180,7 +180,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\MyClass.cs" />
-    <Compile Include="Loader\Resolver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -191,17 +190,26 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Logger\Logger.csproj">
-      <Project>{0A961CFC-8DD2-4E47-A8E2-BE8AF33F5BB0}</Project>
-      <Name>Logger</Name>
-      <Private>False</Private>
+    <ProjectReference Include="..\EventLogListener\EventLogListener.csproj">
+      <Project>{9769bf5d-af46-4ef1-bfdc-b64546bfa7be}</Project>
+      <Name>EventLogListener</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Logger.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Interfaces.dll" />
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{0430c59f-8265-4c7d-b669-a0143172b293}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logger\Logger.csproj">
+      <Project>{0a961cfc-8dd2-4e47-a8e2-be8af33f5bb0}</Project>
+      <Name>Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TextListener\TextListener.csproj">
+      <Project>{a5120372-74c1-4b72-a7c9-68ce8d4d0c85}</Project>
+      <Name>TextListener</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WordListener\WordListener.csproj">
+      <Project>{9e1cd50c-3cce-49c7-88a4-306306a0ffff}</Project>
+      <Name>WordListener</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
